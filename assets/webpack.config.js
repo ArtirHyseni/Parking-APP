@@ -30,7 +30,7 @@ module.exports = (env, options) => ({
                       debug: options.mode === "development"
                   }
               }
-          }
+          },
 
       {
         test: /\.js$/,
