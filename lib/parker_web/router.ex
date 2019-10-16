@@ -20,7 +20,12 @@ defmodule ParkerWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", ParkerWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", ParkerWeb do
+    pipe_through :api
+
+    resources "/users", UserController, only: [:create, :new]
+    get "/login", SessionController, :new
+    post "/login", SessionController, :create
+    delete "/logout", SessionController, :delete
+  end
 end

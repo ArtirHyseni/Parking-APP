@@ -20,6 +20,11 @@ defmodule ParkerWeb.UserController do
     end
   end
 
+  def new(conn, _params) do
+    changeset = Accounts.change_user(%User{})
+    render(conn, "new.json", changeset: changeset)
+  end
+
   def show(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)
     render(conn, "show.json", user: user)

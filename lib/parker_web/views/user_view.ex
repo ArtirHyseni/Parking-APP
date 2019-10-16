@@ -13,6 +13,6 @@ defmodule ParkerWeb.UserView do
   def render("user.json", %{user: user}) do
     %{id: user.id,
       username: user.username,
-      password_hash: user.password_hash}
+      password: user.password}
   end
 end
