@@ -25,7 +25,7 @@ defmodule ParkerWeb.Router do
 
     resources "/users", UserController, only: [:create, :new]
     get "/login", SessionController, :new
-    post "/login", SessionController, :create
-    delete "/logout", SessionController, :delete
+    post "/login", SessionController, :login
+    delete "/logout", SessionController, :logout
   end
 end

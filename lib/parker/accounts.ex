@@ -37,6 +37,12 @@ defmodule Parker.Accounts do
   """
   def get_user!(id), do: Repo.get!(User, id)
 
+
+  def get_by_username(username) do
+    from(u in User, where: u.username == ^username)
+    |> Repo.one()
+  end
+
   @doc """
   Creates a user.
 

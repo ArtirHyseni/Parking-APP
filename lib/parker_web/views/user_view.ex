@@ -10,9 +10,23 @@ defmodule ParkerWeb.UserView do
     %{data: render_one(user, UserView, "user.json")}
   end
 
+  def render("login.json", %{user: user}) do
+    %{data: %{
+         user: %{
+           id: user.id,
+           username: user.username
+         }
+      }
+    }
+  end
+
+  def render("invalid_login.json", %{message: message}) do
+    %{errors: %{message: message}}
+  end
+
   def render("user.json", %{user: user}) do
     %{id: user.id,
-      username: user.username,
-      password: user.password}
+      username: user.username
+    }
   end
 end
