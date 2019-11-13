@@ -34,7 +34,7 @@ defmodule ParkerWeb.UserControllerTest do
 
       assert %{
                "id" => id,
-               "password_hash" => "some password_hash",
+               "password" => "some password",
                "username" => "some username"
              } = json_response(conn, 200)["data"]
     end
@@ -56,7 +56,7 @@ defmodule ParkerWeb.UserControllerTest do
 
       assert %{
                "id" => id,
-               "password_hash" => "some updated password_hash",
+               "password" => "some updated password",
                "username" => "some updated username"
              } = json_response(conn, 200)["data"]
     end

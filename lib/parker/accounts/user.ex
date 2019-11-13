@@ -36,7 +36,7 @@ defmodule Parker.Accounts.User do
 
   defp downcase(changeset) do
     update_change(changeset, :username, &String.downcase/1)
-    |> update_change(:username, &String.downcase/1)
+    |> update_change(:email, &String.downcase/1)
   end
 
 
@@ -47,9 +47,13 @@ defmodule Parker.Accounts.User do
   end
 
   defp encrypt_field(changeset, field, field_hash) do
-    get_change(changeset, field)
-    |> Encryption.hash_field
-    |> (&(put_change(changeset, field_hash, &1))).()
+    case get_change(changeset, field) do
+      nil -> changeset
+      _ ->
+        get_change(changeset, field)
+        |> Encryption.hash_field
+        |> (&(put_change(changeset, field_hash, &1))).()
+    end
   end
 
 end

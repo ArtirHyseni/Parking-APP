@@ -23,8 +23,7 @@ defmodule ParkerWeb.Router do
   scope "/api", ParkerWeb do
     pipe_through :api
 
-#    resources "/users", UserController, only: [:create, :new]
-    post "/users/", UserController, :create
+    resources "/users", UserController
     get "/login", SessionController, :new
     post "/login", SessionController, :login
     delete "/logout", SessionController, :logout
