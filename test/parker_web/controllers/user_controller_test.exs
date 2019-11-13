@@ -5,14 +5,16 @@ defmodule ParkerWeb.UserControllerTest do
   alias Parker.Accounts.User
 
   @create_attrs %{
-    password_hash: "some password_hash",
+    email: "test@mail",
+    password: "some password",
     username: "some username"
   }
   @update_attrs %{
-    password_hash: "some updated password_hash",
+    email: "changed@mail",
+    password: "some updated password",
     username: "some updated username"
   }
-  @invalid_attrs %{password_hash: nil, username: nil}
+  @invalid_attrs %{password: nil, username: nil, email: nil}
 
   def fixture(:user) do
     {:ok, user} = Accounts.create_user(@create_attrs)
