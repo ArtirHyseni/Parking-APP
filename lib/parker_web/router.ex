@@ -23,6 +23,10 @@ defmodule ParkerWeb.Router do
   scope "/api", ParkerWeb do
     pipe_through :api
 
+    scope "/v1" , Api.V1, as: :v1 do
+      resources "/users", UserController, only: [:index, :show]
+    end
+
 #    resources "/users", UserController, only: [:create, :new]
     post "/users/", UserController, :create
     get "/login", SessionController, :new
